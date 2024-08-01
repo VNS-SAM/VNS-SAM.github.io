@@ -173,8 +173,8 @@
 
 <div class="img-container">
     <div class="image-with-caption">
-        <div class="caption">Blur</div>
-        <img style="width: 100%;" src="./robustsam_file/Fig.1.png">
+        <!-- <div class="caption">Blur</div> -->
+        <img style="width: 80%;" src="./robustsam_file/Fig.1.png">
     </div>
     <!-- <div class="image-with-caption">
         <div class="caption">Haze</div>
@@ -194,9 +194,11 @@
   <div class="columns is-centered has-text-centered">
     <div class="column is-three-quarters">
       <p>
-        <b>RobustSAM</b> </i> outperforms with precise boundaries and
-        intact structures, where SAM falters with errors and fragmentation.
-        Red star points and bounding boxes are our examples' input prompts.
+        A comparison of masks predicted by SAM and VNS-SAM under three typical non-salient scenarios. SAM often struggles when dealing with (a)
+camouflaged objects where the objects perfectly match its surroundings, (b) polyp objects where polyp tissues and normal tissues have the same texture,
+posing challenges to medical image analysis, and (c) objects in low-light conditions where the targets lack significant color contrast with their backgrounds.
+SAM fails to accurately identify object boundaries and complete structures, leading to missing segmentation details and incorrect background predictions. In
+contrast, VNS-SAM can produce more accurate segmentation.
       </p>
     </div>
   </div>
@@ -258,34 +260,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Segment Anything Model (SAM) has emerged as a transformative approach in image segmentation, 
-            acclaimed for its robust zero-shot segmentation capabilities and flexible prompting system. 
-            Nonetheless, its performance is challenged by images with degraded quality. Addressing this 
-            limitation, we propose the Robust Segment Anything Model (RobustSAM), which enhances SAM's 
-            performance on low-quality images while preserving its promptability and zero-shot generalization. 
+            Segment Anything Model (SAM), known for its remarkable zero-shot segmentation capabilities, has garnered significant attention in the community. Nevertheless, its performance is challenged when dealing with what we refer to
+as visually non-salient scenarios, where there is low contrast between the foreground and background. In these cases, existing methods often cannot capture the accurate contours and fail
+to produce promising segmentation results. In this paper, we propose Visually Non-Salient SAM (VNS-SAM), aiming to enhance SAM's perception of visually non-salient scenarios while preserving its original zero-shot generalizability. We achieve this by effectively exploiting SAM's low-level features through two designs: Mask-Edge Token Interactive
+decoder and Non-Salient Feature Mining module. These designs help the SAM decoder gain a deeper understanding of non-salient characteristics with only marginal parameter increments
+and computational requirements. The additional parameters of VNS-SAM can be optimized within 4 hours on 4x GPUs, demonstrating its feasibility and practicality for typical research
+laboratories. In terms of data, we established VNS-SEG, a unified dataset for various VNS scenarios, with more than 36K images, in contrast to previous single-task adaptations. It is designed to make the model learn more robust VNS features and comprehensively benchmark the model's segmentation performance
+and generalizability on VNS scenarios. Extensive experiments across various VNS segmentation tasks demonstrate the superior performance of VNS-SAM, particularly under zero-shot settings, highlighting its potential for broad real-world applications.
           </p>
-          <p>
-            Our method leverages the pre-trained SAM model with only marginal parameter increments and computational requirements. 
-            The additional parameters of RobustSAM can be optimized within 30 hours on eight GPUs, demonstrating 
-            its feasibility and practicality for typical research laboratories. We also introduce the Robust-Seg dataset, 
-            a collection of 688K image-mask pairs with different degradations designed to train and evaluate our model optimally. 
-            Extensive experiments across various segmentation tasks and datasets confirm RobustSAM's superior performance, 
-            especially under zero-shot conditions, underscoring its potential for extensive real-world application. Additionally, 
-            our method has been shown to effectively improve the performance of SAM-based downstream tasks such as single 
-            image dehazing and deblurring. 
-          </p> 
-<!--           <p>
-            We address this limitation by lifting
-            NeRFs into a higher dimensional space, and by representing the 5D radiance field
-            corresponding to each individual input image as a slice through this "hyper-space". Our
-            method is inspired by level set methods, which model the evolution of surfaces as slices
-            through a higher dimensional surface. We evaluate our method on two tasks: (i)
-            interpolating smoothly between "moments", i.e., configurations of the scene, seen in the
-            input images while maintaining visual plausibility, and (ii) novel-view synthesis at
-            fixed moments. We show that our method, which we dub HyperNeRF, outperforms existing
-            methods on both tasks. Compared to Nerfies, <i>HyperNeRF</i> reduces average error rates by
-            4.1% for interpolation and 8.6% for novel-view synthesis, as measured by LPIPS.
-          </p> -->
         </div>
       </div>
     </div>
@@ -400,23 +382,22 @@
 
       <div class="has-text-centered">
 <!--         <embed src="./robustsam_file/architecture.pdf" width="800px" height="2100px" /> -->
-        <img style="width: 100%;" src="./robustsam_file/architecture.jpg"
-             alt="RobustSAM architecture."/>
+        <img style="width: 100%;" src="./robustsam_file/architecture.png"
+             alt="VNS-SAM architecture."/>
 
 
         <div class="content has-text-justified">
           <p>
-RobustSAM augments the original SAM by incorporating five essential components
-(in purple). During training, clear images are fed through the original SAM modules (in gray) to produce features for clear scenes.
-Subsequently, degraded images, generated through augmentation of clear inputs, are processed by RobustSAM, yielding features for
-degraded scenarios. These are then refined via Anti-degradation modules, ensuring consistency with features from clear scenes. This
-methodology, supported by a segmentation loss, achieves precise segmentation outcomes in both clear and degraded image conditions.
-During inference, only RobustSAM is used to predict a segmentation mask from an input image. Note: The prompt encoder is excluded for
-conciseness, and the padlock icons represent fixed components loaded from the original SAM model that are not updated during training.
+            Overview of the proposed VNS-SAM. Building upon SAM, VNS-SAM makes two key improvements. 
+            First, it enhances the SAM's original decoder to a mask-edge token interactive (METI) decoder with the interaction of edge semantics and dual-level decoder layers enhancement. 
+            Second, a lightweight NSFM module is designed to mine the inconspicuous discriminative features from the image encoder layers, which serve as complementary features to the prediction layer. 
+            {During training, the parameters of the pre-trained SAM are frozen and only the newly added parameters in VNS-SAM are trained.} 
+            During inference, VNS-SAM outputs the more precise VNS-mask and the original SAM's outputs.
+            The prompt encoder and prompt tokens are omitted here.
         </div>
 
       </div>
-      <h3 class="title is-4">Overview of the proposed AMFG and AOTG modules</h3>
+      <h3 class="title is-4">Overview of the proposed   modules</h3>
 <!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./robustsam_file/module.jpg"
              alt="AMFG and AOTG modules."/>
@@ -469,7 +450,7 @@ conciseness, and the padlock icons represent fixed components loaded from the or
 
 <hr/>
 
-<section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
   <div class="container content is-max-desktop">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{chen2024robustsam,
@@ -479,7 +460,7 @@ conciseness, and the padlock icons represent fixed components loaded from the or
   issue_date = {2024}
 }</code></pre>
   </div>
-</section>
+</section> -->
 
 
 <!-- <section class="section" id="acknowledgements">
