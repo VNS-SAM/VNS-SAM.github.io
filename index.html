@@ -293,6 +293,43 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Architecture of VNS-SAM</h2>
+      <p>
+        VNS-SAM contains two key components, i.e., the <b>Mask-Edge Token Interactive (METI)</b> decoder and <b>Non-Salient Feature Mining (NSFM)</b> modules, 
+        which encourage SAM to learn VNS characters. 
+      <div class="has-text-centered">
+<!--         <embed src="./robustsam_file/architecture.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 100%;" src="./vnssam_file/architecture.png"
+             alt="VNS-SAM architecture."/>
+        <div class="content has-text-justified">
+          <p>
+            Overview of the proposed VNS-SAM. It enhances the SAM's original decoder to a mask-edge token interactive (METI) decoder with the interaction of edge semantics and dual-level decoder layers enhancement. 
+            Second, a lightweight NSFM module is designed to mine the inconspicuous discriminative features from the image encoder layers, which serve as complementary features to the prediction layer. 
+            {During training, the parameters of the pre-trained SAM are frozen and only the newly added parameters in VNS-SAM are trained.} 
+            During inference, VNS-SAM outputs the more precise VNS-mask and the original SAM's outputs.
+            The prompt encoder and prompt tokens are omitted here.
+        </div>
+      </div>
+
+      <h3 class="title is-4">Overview of the proposed NSFM module</h3>
+<!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 50%;" src="./vnssam_file/NSFM.png"
+             alt="NSFM."/>
+        <div class="content has-text-justified">
+          <p>
+            Details of Non-Salient Feature Mining (NSFM) module. The multi-level features extracted from the backbone are decomposed into different
+components. Then, the most informative high-frequency and low-frequency
+components are selected and multi-level features are aggregated for edge and
+mask feature extraction.
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="content has-text-justified">
       <h2 class="title is-3">Architecture of VNS-SAM</h2>
       <p>
@@ -326,6 +363,8 @@ mask feature extraction.
     </div>
   </div>
 </section>
+
+
 
 
 
