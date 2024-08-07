@@ -12,7 +12,7 @@
         type="image/x-icon"
         href="./static/images/favicon.ico"/> -->
 
-  <title> Boosting Segment Anything Model to Generalize to Visually Non-Salient Scenarios
+  <title> Boosting Segment Anything Model to Generalize Visually Non-Salient Scenarios
     </title>
 
 
@@ -95,8 +95,8 @@
           <div class="author-block"><a> Guangqian Guo</a> <sup> 1</sup></div>
           <div class="author-block"><a> Pengfei Chen</a> <sup> 2</sup></div>
           <div class="author-block"><a> Yong Guo</a> <sup> 3</sup></div>
-          <div class="author-block"><a> Boqiang Zhang</a> <sup> 4</sup></div>
           <div class="author-block"><a> Huafeng Chen</a> <sup> 1</sup></div>
+          <div class="author-block"><a> Boqiang Zhang</a> <sup> 4</sup></div>
           <div class="author-block"><a> Shan Gao</a> <sup> 1</sup></div>
 
         <div class="is-size-5 publication-authors">
@@ -110,7 +110,7 @@
         <div class="column has-text-centered">
           <div class="publication-links">
             <!-- PDF Link. -->
-            <span class="link-block">
+            <!-- <span class="link-block">
                 <a href="https://openaccess.thecvf.com/content/CVPR2024/html/Chen_RobustSAM_Segment_Anything_Robustly_on_Degraded_Images_CVPR_2024_paper.html" 
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -127,7 +127,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-            </span>
+            </span> -->
             <span class="link-block">
               <a href="https://github.com/robustsam/RobustSAM" 
                  class="external-link button is-normal is-rounded is-dark">
@@ -154,9 +154,9 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="hero-body">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop"> -->
 <!--       <video id="teaser" autoplay controls muted loop playsinline height="100%">
         <source src="./static/images/teaser.mp4"
                 type="video/mp4">
@@ -167,9 +167,9 @@
         family of shapes in a higher-dimensional space, thereby producing more realistic renderings
         and more accurate geometric reconstructions. -->
 <!--       </h2> -->
-    </div>
+    <!-- </div>
   </div>
-</section>
+</section> -->
 
 <div class="img-container">
     <div class="image-with-caption">
@@ -292,162 +292,66 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
 <hr/>
 
 <section class="section">
-<!--   <div class="container is-max-desktop">
-    <h2 class="title is-3">Motivation</h2>
-    <div class="columns is-centered">
-      <!-- Level Sets. -->
-<!--       <div class="column is-half">
-        <div class="content">
-          <h3 class="title is-4">Level-Set Methods</h3>
-          <div class="level-set has-text-justified">
-            <p>
-              HyperNeRF represents changes in scene topology by providing a
-              NeRF with a higher-dimensional input. This is inspired by level-set methods.
-              Level-set methods provide a means to model a family of topologically-varying shapes as
-              slices of a higher dimensional auxiliary function. For example, these shapes
-            </p>
-            <div class="level-set-shapes">
-              <img src="./static/figures/level_set/0.svg"/>
-              <img src="./static/figures/level_set/1.svg"/>
-              <img src="./static/figures/level_set/2.svg"/>
-            </div>
-            <p>
-              can be represented as slices through this auxiliary shape
-            </p>
-            <model-viewer class="level-set-slices"
-                          src="./static/figures/level_set/level_set_3d.glb"
-                          alt="Slices through a 3D ambient surface."
-                          environment-image="neutral" auto-rotate camera-controls></model-viewer>
-            <p>
-              We can naturally model topologically varying shapes by just moving the
-              slicing plane along the higher dimensions. For example, this animation was generated
-              by
-              moving the slicing plane from top to bottom:
-            </p>
-            <div class="has-text-centered">
-              <video class="level-set-interpolate" controls autoplay loop playsinline muted height="100%">
-                <source src="./static/figures/level_set/interpolate2.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!--/ Level Sets. -->
-
-<!--       <div class="column is-half">
-        <div class="content has-text-justified">
-          <h3 class="is-4">Slicing Surfaces</h3>
-          <p>
-            Consider the follow shapes, which have different permutations of O xand X.
-          </p>
-          <div class="level-set-ox-shapes">
-            <img src="./static/figures/level_set/ox/0.svg"/>
-            <img src="./static/figures/level_set/ox/1.svg"/>
-            <img src="./static/figures/level_set/ox/2.svg"/>
-            <img src="./static/figures/level_set/ox/3.svg"/>
-          </div>
-          <p>
-            Traditionally, level-set methods use straight planes to slice the higher-dimensional
-            surface:
-          </p>
-          <model-viewer class="level-set-slices"
-                        src="./static/figures/level_set/ox/ox_ap.glb"
-                        alt="Slices through a 3D ambient surface."
-                        environment-image="neutral" auto-rotate camera-controls></model-viewer>
-          <p>
-            This means the higher-dimensional shape must contain copies of the same shape since
-            each permutation has to lie along a single straight slice through the z-axis. If we let
-            the slicing plane bend, it results in a much cleaner template:
-          </p>
-          <model-viewer class="level-set-slices"
-                        src="./static/figures/level_set/ox/ox_ds.glb"
-                        alt="Slices through a 3D ambient surface."
-                        environment-image="neutral" auto-rotate camera-controls></model-viewer>
-          <p>Please see the paper for details.</p>
-        </div>
-      </div>
-
-    </div>
-  </div> --> -->
-
-
   <div class="container is-max-desktop">
     <div class="content has-text-justified">
       <h2 class="title is-3">Architecture of VNS-SAM</h2>
       <p>
-        The key contribution of RobustSAM 
-        is the <b>Anti-Degradation Output Token Generation (AOTG)</b> and <b>Anti-Degradation Mask Feature Generation 
-        (AMFG)</b> modules, which extract degradation-invariant information that is aligned those extracted from 
-        clear images by the original SAM. 
+        VNS-SAM contains two key components, i.e., the <b>Mask-Edge Token Interactive (METI)</b> decoder and <b>Non-Salient Feature Mining (NSFM)</b> modules, 
+        which encourage SAM to learn VNS characters. 
 
       <div class="has-text-centered">
 <!--         <embed src="./robustsam_file/architecture.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./vnssam_file/architecture.png"
              alt="VNS-SAM architecture."/>
-
-
         <div class="content has-text-justified">
           <p>
-            Overview of the proposed VNS-SAM. Building upon SAM, VNS-SAM makes two key improvements. 
-            First, it enhances the SAM's original decoder to a mask-edge token interactive (METI) decoder with the interaction of edge semantics and dual-level decoder layers enhancement. 
+            Overview of the proposed VNS-SAM. It enhances the SAM's original decoder to a mask-edge token interactive (METI) decoder with the interaction of edge semantics and dual-level decoder layers enhancement. 
             Second, a lightweight NSFM module is designed to mine the inconspicuous discriminative features from the image encoder layers, which serve as complementary features to the prediction layer. 
             {During training, the parameters of the pre-trained SAM are frozen and only the newly added parameters in VNS-SAM are trained.} 
             During inference, VNS-SAM outputs the more precise VNS-mask and the original SAM's outputs.
             The prompt encoder and prompt tokens are omitted here.
         </div>
-
       </div>
-      <h3 class="title is-4">Overview of the proposed   modules</h3>
+
+      <h3 class="title is-4">Overview of the proposed NSFM module</h3>
 <!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
-        <img style="width: 100%;" src="./vnssam_file/module.jpg"
-             alt="AMFG and AOTG modules."/>
+        <img style="width: 100%;" src="./vnssam_file/NSFM.png"
+             alt="NSFM."/>
         <div class="content has-text-justified">
           <p>
-      The Anti-Degradation Mask Feature Generation and Output Token Generation modules significantly enhance image quality and segmentation by normalizing degradation effects while preserving essential content. Utilizing Instance and Batch Normalization, the model stabilizes content under various conditions. A Fourier Degradation Suppression module further isolates degradation, focusing on maintaining structural integrity. These modules ensure the generation of robust, degradation-invariant features for precise image assessment and segmentation.
-
+            Details of Non-Salient Feature Mining (NSFM) module. The multi-level features extracted from the backbone are decomposed into different
+components. Then, the most informative high-frequency and low-frequency
+components are selected and multi-level features are aggregated for edge and
+mask feature extraction.
         </div>
-      
-      
-
-
-      
-<!--       <p>
-        HyperNeRF leverages main idea of level set methods by using a template NeRF which lives in
-        higher dimensions. In addition to the spatial coordinates (X, Y, Z), the NeRF MLP takes
-        additional higher dimensional coordinates W<sub>1</sub> and W<sub>2</sub>. We call these
-        the "ambient dimensions".
-      </p>
-      <p>
-        Here is an interactive viewer for the hyper-space of capture shown in the teaser. Drag the
-        <span style="color: #29e">blue cursor</span> around to change the ambient dimension rendered
-        on the right.
-      </p> -->
     </div>
-<!--     <div class="columns is-centered">
-      <div class="column is-half">
-        <div class="hyper-space-wrapper has-text-centered">
-          <div class="hyper-space-axis">
-            <div class="hyper-space">
-              <div class="hyper-space-cursor"></div>
-            </div>
-          </div>
-          Ambient Dimension Coordinates
-          <br/>
-          <small>(Background shows log density of coordinate)</small>
-        </div>
-      </div>
-      <div class="column is-half has-text-centered">
-        <div class="hyper-grid-wrapper">
-          <div class="hyper-grid-rgb">
-            <img src="./static/figures/hyper_grid.jpg"/>
-          </div>
-        </div>
-        The hyper-space template rendered from a fixed viewpoint.
-      </div>
-    </div> -->
   </div>
 </section>
 
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content has-text-justified">
+      <h2 class="title is-3">Results on VNS-SEG Benchmark</h2>
+      <p>  Detailed resuls on VNS-SEG, including seen-set evaluation and unseen-set evaluation.
+
+      <h3 class="title is-4">Results on the Eval-Seen-Set</h3>
+<!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 100%;" src="./vnssam_file/seen-set-results.png"
+             alt="seen-set res."/>
+        <h3 class="title is-4">Results on the Eval-Unseen-Set</h3>
+<!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 100%;" src="./vnssam_file/unseen-set-results.png"
+             alt="unseen-set-results."/>
+        <div class="content has-text-justified">
+        <p>
+          Three types of prompts are used to comprehensively assess the model. 
+          Our models consistently outperform the baseline SAM and other competitors on diverse seen and unseen datasets. 
+      </div>
+    </div>
+  </div>
+</section>
 <hr/>
 
 <!-- <section class="section" id="BibTeX">
