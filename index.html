@@ -296,7 +296,7 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <h2 class="title is-3">Visually Non-Salient SAM</h2>
+      <h2 class="title is-3">VNS-SAM: Visually Non-Salient Segment Anything Model</h2>
       <div class="content has-text-justified"> 
       <p>
         VNS-SAM contains two key components, i.e., the <b>Mask-Edge Token Interactive (METI)</b> decoder and <b>Non-Salient Feature Mining (NSFM)</b> modules, 
@@ -304,7 +304,7 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
       </div>
       
       <div class="content has-text-centered">
-        <h2 class="title is-3">Overview of VNS-SAM</h2>
+        <h2 class="title is-4">Overview of VNS-SAM</h2>
       <div class="has-text-centered">
 <!--         <embed src="./robustsam_file/architecture.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./vnssam_file/architecture.png"
@@ -339,6 +339,29 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <h2 class="title is-3">VNS-SEG: Visually Non-Salient Segmentation Dataset</h2>
+      <div class="content has-text-justified">
+        <p>  To enable the segmentation models to effectively learn VNS characters, we meticulously construct a unified dataset: VNS-SEG, for training and benchmarking the performance of the segmentation model on diverse visually non-salient scenarios.       </div>
+      <div class="content has-text-centered">
+        <h3 class="title is-4">Data composition of the training set of our VNS-SEG.</h3>
+<!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 100%;" src="./vnssam_file/trainset.png"
+             alt="seen-set res."/>
+      </div>
+      <div class="content has-text-centered">
+        <h3 class="title is-4">Data composition of the eval set of our VNS-SEG.</h3>
+<!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
+        <img style="width: 100%;" src="./vnssam_file/eval-set.png"
+             alt="unseen-set-results."/>
+      </div>
+        
+    </div>
+  </div>
+</section>
 
 
 
