@@ -296,13 +296,15 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <h2 class="title is-3">Architecture of VNS-SAM</h2>
+      <h2 class="title is-3">VNS-SAM</h2>
       <div class="content has-text-justified"> 
       <p>
         VNS-SAM contains two key components, i.e., the <b>Mask-Edge Token Interactive (METI)</b> decoder and <b>Non-Salient Feature Mining (NSFM)</b> modules, 
         which encourage SAM to learn VNS characters. 
       </div>
-
+      
+      <div class="content has-text-centered">
+        <h2 class="title is-3">Overview of VNS-SAM</h2>
       <div class="has-text-centered">
 <!--         <embed src="./robustsam_file/architecture.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./vnssam_file/architecture.png"
@@ -316,6 +318,8 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
             The prompt encoder and prompt tokens are omitted here.
         </div>
       </div>
+      </div>
+
       <div class="content has-text-centered">
         <h3 class="title is-4">Overview of the proposed NSFM module</h3>
         <!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
@@ -341,19 +345,25 @@ and generalizability on VNS scenarios. Extensive experiments across various VNS 
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="content has-text-justified">
+    <div class="content has-text-centered">
       <h2 class="title is-3">Results on VNS-SEG Benchmark</h2>
-      <p>  Detailed resuls on VNS-SEG, including seen-set evaluation and unseen-set evaluation. Three types of prompts are used to comprehensively assess the model. 
-        Our models consistently outperform the baseline SAM and other competitors on diverse seen and unseen datasets. 
-
-      <h3 class="title is-4">Results on the Eval-Seen-Set</h3>
+      <div class="content has-text-justified">
+        <p>  Detailed resuls on VNS-SEG, including seen-set evaluation and unseen-set evaluation. Three types of prompts are used to comprehensively assess the model. 
+          Our models consistently outperform the baseline SAM and other competitors on diverse seen and unseen datasets.   
+      </div>
+      <div class="content has-text-centered">
+        <h3 class="title is-4">Results on the Eval-Seen-Set</h3>
 <!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./vnssam_file/seen-set-results.png"
              alt="seen-set res."/>
+      </div>
+      <div class="content has-text-centered">
         <h3 class="title is-4">Results on the Eval-Unseen-Set</h3>
 <!--       <embed src="./robustsam_file/style-suppresion.pdf" width="800px" height="2100px" /> -->
         <img style="width: 100%;" src="./vnssam_file/unseen-set-results.png"
              alt="unseen-set-results."/>
+      </div>
+        
     </div>
   </div>
 </section>
